@@ -1,1 +1,1 @@
-# capture-image-webcab
+# capture-image-webcam
