@@ -1,0 +1,21 @@
+<div class="row">
+  <button (click)="start()" [disabled]="liveVideo">Capturar vídeo</button>
+  <button (click)="stop()" [disabled]="!liveVideo" >Desligar câmera</button>
+  <button (click)="snapshot()" [disabled]="!liveVideo" >Tirar foto</button>
+</div>
+
+<div>
+  <p>
+    <h3>
+      <video #videoElement muted autoplay class="liveVideo"></video>
+    </h3>
+    <div class="imageContainer">
+      <div class="imageGrid">
+        <div class="imageGridItem" *ngFor="let image of images; let i = index">
+          <img [src]="image.content" class="liveVideo" />
+          <span class="material-icons teste" (click)="removeImage(i)">delete</span>
+        </div>
+      </div>
+    </div>
+    <canvas #canvas [hidden]="true" ></canvas>
+</div>
