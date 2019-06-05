@@ -2,6 +2,7 @@
   <button (click)="start()" [disabled]="liveVideo">Capturar vídeo</button>
   <button (click)="stop()" [disabled]="!liveVideo" >Desligar câmera</button>
   <button (click)="snapshot()" [disabled]="!liveVideo" >Tirar foto</button>
+  <button (click)="sendToServer()" [disabled]="!images.length" >Enviar para o servidor</button>
 </div>
 
 <div>

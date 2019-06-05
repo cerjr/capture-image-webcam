@@ -63,12 +63,6 @@ export class AppComponent {
     //
     // formData.append('files', blob, 'file.png');
     //
-    // this.http.post("http://localhost:8080/api/test", formData)
-    //   .subscribe(
-    //     err => {
-    //       console.log(err);
-    //     }
-    //   );
   }
 
   private initCamera(config:any) {
@@ -90,6 +84,24 @@ export class AppComponent {
 
   removeImage(index) {
     this.images.splice(index, 1);
+  }
+
+  sendToServer() {
+    this.images.map(image => {
+      let picture = image.content.replace(/^data:image\/(webp|png|jpg|jpeg|);base64,/, "");
+      image.content = picture;
+    });
+
+    this.http.post("http://localhost:8080/upload/dto", this.images,
+      {
+      observe: 'body',
+      responseType: 'json'
+    })
+      .subscribe(
+        err => {
+          console.log(err);
+        }
+      );
   }
 
 }
