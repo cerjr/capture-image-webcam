@@ -12,18 +12,21 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.List;
 
 @RestController
 @RequestMapping("upload")
 @Slf4j
-@CrossOrigin("*")
-public class AppController {
+@CrossOrigin(origins = "*")
+public class AppController implements Serializable {
+
+    static final String corsUrl = "*";
 
     @PostMapping("dto")
     @ResponseStatus(HttpStatus.OK)
     @SneakyThrows
-    public void dtoMode(List<Image> images) {
+    public void dtoMode(@RequestBody List<Image> images) {
         for (Image image : images) {
             final byte[] bytes = Base64.decodeBase64(image.getContent());
 
