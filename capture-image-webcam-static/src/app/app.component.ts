@@ -8,11 +8,11 @@ import {HttpClient } from '@angular/common/http';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  @ViewChild('videoElement') videoElement: ElementRef;
+  @ViewChild('videoElement', {static: true}) videoElement: ElementRef;
   video: any;
   imageUrl: string;
 
-  @ViewChild('canvas') canvasElement: ElementRef;
+  @ViewChild('canvas', {static: true}) canvasElement: ElementRef;
   canvas: any;
 
   liveVideo: boolean;
