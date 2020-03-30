@@ -1,13 +1,13 @@
-package captureimagewebcam.server.application;
+package captureimagewebcam.server;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ServerApplication {
+public class ServerApp {
 
     public static void main(String[] args) {
-        SpringApplication.run(ServerApplication.class, args);
+        SpringApplication.run(ServerApp.class, args);
     }
 
 }

@@ -4,15 +4,20 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { CaptureComponent } from './capture/capture.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CaptureComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,29 @@
+<div class="row">
+  <label for="select">Source: </label>
+  <select id="select"
+          [(ngModel)]="selectedCamera"
+          [disabled]="liveVideo"
+          class="select">
+    <option *ngFor="let camera of cameras" [ngValue]="camera">{{camera.label}}</option>
+  </select>
+  <button (click)="start()" [disabled]="liveVideo">Start camera</button>
+  <button (click)="snapshot()" [disabled]="!liveVideo" >Snapshot</button>
+  <button (click)="stop()" [disabled]="!liveVideo" >Stop camera</button>
+  <button (click)="sendToServer()" [disabled]="!images.length" >Send to server</button>
+</div>
+
+<div>
+  <p>
+  <h3>
+    <video #videoElement muted autoplay class="liveVideo"></video>
+  </h3>
+  <div class="imageContainer">
+    <div class="imageGrid">
+      <div class="imageGridItem" *ngFor="let image of images; let i = index">
+        <img [src]="image.content" class="liveVideo" alt="snapshot"/>
+        <span class="material-icons teste" (click)="removeImage(i)">delete</span>
+      </div>
+    </div>
+  </div>
+  <canvas #canvas [hidden]="true" ></canvas>
+</div>
