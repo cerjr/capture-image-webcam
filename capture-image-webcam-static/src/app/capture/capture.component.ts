@@ -57,13 +57,11 @@ export class CaptureComponent implements OnInit {
 
     this.initCamera(this.defaultVideoConfig).then(()=>{
       navigator.mediaDevices.enumerateDevices().then((mediaDevices:MediaDeviceInfo[]) => {
-        let cameras = [];
         mediaDevices.forEach((mediaDevice: MediaDeviceInfo) => {
           if (mediaDevice.kind === "videoinput") {
-            cameras.push(mediaDevice)
+            this.cameras.push(mediaDevice)
           }
         });
-        this.cameras = cameras;
         this.selectedCamera = this.cameras[0];
         this.stop();
       }).catch(error => {
@@ -113,7 +111,7 @@ export class CaptureComponent implements OnInit {
       return new Image(picture);
     });
 
-    this.http.post("http://localhost:8080/upload/dto", images,
+    this.http.post("http://localhost:8080/upload", images,
       {
         observe: 'body',
         responseType: 'json'

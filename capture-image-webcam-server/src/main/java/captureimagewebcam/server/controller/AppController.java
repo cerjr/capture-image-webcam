@@ -21,12 +21,9 @@ import java.util.List;
 @CrossOrigin(origins = "*")
 public class AppController implements Serializable {
 
-    static final String corsUrl = "*";
-
-    @PostMapping("dto")
     @ResponseStatus(HttpStatus.OK)
     @SneakyThrows
-    public void dtoMode(@RequestBody List<Image> images) {
+    public void uploadAsDTO(@RequestBody List<Image> images) {
         for (Image image : images) {
             final byte[] bytes = Base64.decodeBase64(image.getContent());
 
